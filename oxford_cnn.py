@@ -64,10 +64,10 @@ print(Ytest)
 
 # Building convolutional network
 network = input_data(shape=[None, 80, 80, 3], name='input')
-network = conv_2d(network, 32, 3, activation='relu', regularizer="L2")
+network = conv_2d(network, 32, 5, activation='relu', regularizer="L2")
 network = max_pool_2d(network, 2)
 network = local_response_normalization(network)
-network = conv_2d(network, 64, 3, activation='relu', regularizer="L2")
+network = conv_2d(network, 64, 5, activation='relu', regularizer="L2")
 network = max_pool_2d(network, 2)
 network = local_response_normalization(network)
 network = fully_connected(network, 128, activation='tanh')
@@ -80,7 +80,8 @@ network = regression(network, optimizer='adam', learning_rate=0.01,
 
 # Training
 model = tflearn.DNN(network, checkpoint_path='model_vgg',
-                    max_checkpoints=1, tensorboard_verbose=0)
+                    max_checkpoints=1, tensorboard_verbose=3)
+
 model.fit(X, Y, validation_set=0.1, n_epoch=100, shuffle=True,
           show_metric=True, batch_size=64, snapshot_step=500,
           snapshot_epoch=False, run_id='Raspberies')
