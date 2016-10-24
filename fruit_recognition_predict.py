@@ -11,7 +11,7 @@ imageWidth = 227
 imageHeight = 227
 numClasses = 2
 
-network = fruit_recognition_model.getNetwork(imageWidth, imageHeight, numClasses)
+network = fruit_recognition_model.getAlexNet(imageWidth, imageHeight, numClasses)
 model = tflearn.DNN(network)
 
 model.load("_fruit_recognition_model.tfl")

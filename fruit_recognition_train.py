@@ -29,9 +29,9 @@ network = fruit_recognition_model.getNetwork(imageWidth, imageHeight, numClasses
 
 # Training
 model = tflearn.DNN(network, checkpoint_path='model_alexnet',
-                    max_checkpoints=1, tensorboard_verbose=2)
+                    max_checkpoints=1, tensorboard_verbose=0)
 
-model.fit(X, Y, n_epoch=100, validation_set=0.2, shuffle=True,
+model.fit(X, Y, n_epoch=1000, validation_set=0.2, shuffle=True,
           show_metric=True, batch_size=64, snapshot_step=200,
           snapshot_epoch=False, run_id='fruit_recognition_convnet')
 
